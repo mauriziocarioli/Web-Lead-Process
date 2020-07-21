@@ -1,0 +1,56 @@
+= Demo Web Lead Process
+
+Invoke by posting the following content
+
+[source,JSON]
+----
+{
+    "lookup": "web-lead-stateless-ksession",
+    "commands": [
+        {
+            "insert": {
+                "object": {
+                    "com.home_security.web_lead.WebLead": {
+                        "formName": "default",
+                        "promotionCode": "WEB0001421",
+                        "messageDivision": "resi",
+                        "messageType": "L",
+                        "emailSubject": "Home Security Review DNIS:WEB0001421",
+                        "firstName": "Ben",
+                        "lastName": "Xxxxxx",
+                        "stateCode": "AZ",
+                        "countryCode": "US",
+                        "zipCode": "85716",
+                        "primaryPhoneNumber": "9905556922",
+                        "emailAddress": "benXxxxx@yahoo.com",
+                        "sourceIP": "99.43.34.116",
+                        "createDateTime": "2020-07-03T08:11:40"
+                    }
+                },
+                "out-identifier": "webLead",
+                "return-object": false
+            }
+        },
+        {
+            "fire-all-rules": {
+                "out-identifier": "firedActivations"
+            }
+        },
+        {
+            "get-objects": {
+                "out-identifier": "objects"
+           }
+        },
+        {
+            "dispose": {}
+        }
+    ]
+}
+----
+
+to the end point
+
+[source,URL]
+----
+http://localhost:8080/kie-server/services/rest/server/containers/instances/Web-Lead_1.0.0-SNAPSHOT
+----

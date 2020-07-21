@@ -1,0 +1,15 @@
+package com.home_security.web_lead;
+
+import java.lang.Number;
+
+rule "Update Live To Date"
+	dialect "mvel"
+	enabled true
+	ruleflow-group "webleadsplit_segmentation"
+	salience -1
+	when
+		webLeadSplit : WebLeadSplit( liveToDate : liveToDate, localCount : localCount, splitCount : splitCount, eval( localCount+splitCount != 0 ))
+	then
+		System.out.println("===> Firing rule "+drools.getRule().getName());
+		webLeadSplit.setLiveToDate( splitCount.doubleValue()/(splitCount.doubleValue()+localCount.doubleValue()) );
+end
