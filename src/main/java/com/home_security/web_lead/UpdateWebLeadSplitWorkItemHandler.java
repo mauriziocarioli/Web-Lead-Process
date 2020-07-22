@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.EntityManagerFactory;
-mport javax.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.QueryTimeoutException;
 import javax.persistence.TransactionRequiredException;
