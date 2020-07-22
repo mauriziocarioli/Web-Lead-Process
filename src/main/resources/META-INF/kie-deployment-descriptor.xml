@@ -18,9 +18,21 @@
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new org.jbpm.process.workitem.jms.JMSSendTaskWorkItemHandler("java:/ConnectionFactory", "queue/news")</identifier>
+            <identifier>new org.jbpm.process.workitem.jms.JMSSendTaskWorkItemHandler()</identifier>
             <parameters/>
             <name>JMSSendTask</name>
+        </work-item-handler>
+        <work-item-handler>
+            <resolver>mvel</resolver>
+            <identifier>new com.home_security.web_lead.ReadWebLeadSplitWorkItemHandler()</identifier>
+            <parameters/>
+            <name>ReadWebLeadSplitTask</name>
+        </work-item-handler>
+        <work-item-handler>
+            <resolver>mvel</resolver>
+            <identifier>new com.home_security.web_lead.UpdateWebLeadSplitWorkItemHandler()</identifier>
+            <parameters/>
+            <name>UpdateWebLeadSplitTask</name>
         </work-item-handler>
     </work-item-handlers>
     <environment-entries/>
