@@ -152,7 +152,7 @@
     "name" : "ReadWebLeadSplitTask",
     "defaultHandler" : "mvel: new com.home_security.web_lead.ReadWebLeadSplitWorkItemHandler()",
     "displayName" : "Read Web Lead Split Task",
-    "icon" : "defaultservicenodeicon.png",
+    "icon" : "database-icon-flat.png",
     "category" : "Custom tasks",
     "parameters" : [
        "Name" : new StringDataType()
@@ -166,7 +166,7 @@
     "name" : "UpdateWebLeadSplitTask",
     "defaultHandler" : "mvel: new com.home_security.web_lead.UpdateWebLeadSplitWorkItemHandler()",
     "displayName" : "Update Web Lead Split Task",
-    "icon" : "defaultservicenodeicon.png",
+    "icon" : "database-icon-flat.png",
     "category" : "Custom tasks",
     "parameters" : [
       "Name" : new StringDataType(),
