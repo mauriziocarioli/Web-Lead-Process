@@ -25,7 +25,7 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     public ReadWebLeadSplitWorkItemHandler() {
         LOG.info("Registered ReadWebLeadSplitWorkItemHandler");
-        emf = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
+        emf = Persistence.createEntityManagerFactory("com.home-security:Web-Lead:1.0.0-SNAPSHOT");
     }
 
     @Override
