@@ -55,8 +55,8 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         LOG.info("Query created");
         WebLeadSplit wls = new WebLeadSplit();
         try {
-            em.joinTransaction();
-            LOG.info("Joined transaction");
+            //em.joinTransaction();
+            //LOG.info("Joined transaction");
             wls = (WebLeadSplit)q.getSingleResult();
             LOG.info("Result returned");
         } catch (NoResultException e) {
@@ -68,7 +68,7 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            em.close();
+            //em.close();
         }
         Map<String, Object> r = new HashMap<>();
         r.put("Result",wls);
