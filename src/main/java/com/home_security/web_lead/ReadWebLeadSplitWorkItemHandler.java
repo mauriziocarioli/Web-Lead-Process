@@ -44,9 +44,9 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         String s =
         //JPQL not SQL 
         "select "+
-            "id,lob,name,liveToDate,splitRatio,splitCount,localCount "+
-        "from WebLeadSplit "+
-        "where name=:name";
+            "w "+
+        "from WebLeadSplit w "+
+        "where w.name=:name";
         Query q = em.createQuery(s).setParameter("name", name);
         WebLeadSplit wls = new WebLeadSplit();
         try {
