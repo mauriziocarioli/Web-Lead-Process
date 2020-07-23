@@ -2,7 +2,7 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:orm="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
     <persistence-unit name="WEBLEADSPLIT_PERSISTENCE_UNIT" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:jboss/datasources/586b31b2-0409-48b3-8cb4-cebd3ec2b804_81d1140b-c1fe-4aa1-bbc0-370ee7343e07</jta-data-source>
+        <jta-data-source>java:jboss/kie/datasources/586b31b2-0409-48b3-8cb4-cebd3ec2b804_81d1140b-c1fe-4aa1-bbc0-370ee7343e07</jta-data-source>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
