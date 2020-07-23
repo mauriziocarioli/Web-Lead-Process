@@ -25,13 +25,13 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     public ReadWebLeadSplitWorkItemHandler() {
         LOG.info("Registered ReadWebLeadSplitWorkItemHandler");
-        ClassLoader cl = ReadWebLeadSplitWorkItemHandler.class.getClassLoader();
-        ClassLoader ccl = Thread.currentThread().getContextClassLoader();
+        //ClassLoader cl = ReadWebLeadSplitWorkItemHandler.class.getClassLoader();
+        //ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
-            Thread.currentThread().setContextClassLoader(cl);
+            //Thread.currentThread().setContextClassLoader(cl);
             emf = Persistence.createEntityManagerFactory("com.home-security:Web-Lead:1.0.0-SNAPSHOT");
         } finally {
-            Thread.currentThread().setContextClassLoader(ccl);           
+            //Thread.currentThread().setContextClassLoader(ccl);           
         }
     }
 
