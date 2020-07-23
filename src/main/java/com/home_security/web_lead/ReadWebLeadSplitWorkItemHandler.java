@@ -46,7 +46,7 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         "select "+
             "wsl "+
         "from WebLeadSplit "+
-        "where wsl.name=:name";
+        "where name=:name";
         Query q = em.createQuery(s).setParameter("name", name);
         WebLeadSplit wls = new WebLeadSplit();
         try {
