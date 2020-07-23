@@ -30,12 +30,13 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
     public void executeWorkItem(WorkItem wi, WorkItemManager wim) {
         LOG.info("Executing Read WebLeadSplit Work Item with id '"+wi.getId()+
         "' on process instance: "+wi.getProcessInstanceId());
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("wls");
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
         EntityManager em = emFactory.createEntityManager();
         String s = "SELECT * FROM WEBLEAD.WEBLEADSPLIT WHERE NAME='"+(String)wi.getParameter("Name")+"'";
         Query q = em.createQuery(s);
         WebLeadSplit wls = new WebLeadSplit();
         try {
+            em.joinTransaction();
             wls = (WebLeadSplit)q.getSingleResult();
         } catch (NoResultException e) {
             LOG.error("Read WebLeadSplit WIH: No result.");
@@ -45,6 +46,8 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
             LOG.error("Read WebLeadSplit WIH: Query timeout.");
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            em.close();
         }
         Map<String, Object> r = new HashMap<>();
         r.put("Result",wls);

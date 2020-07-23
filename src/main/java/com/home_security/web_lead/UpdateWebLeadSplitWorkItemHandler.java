@@ -30,7 +30,7 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
     public void executeWorkItem(WorkItem wi, WorkItemManager wim) {
         LOG.info("Executing Update WebLeadSplit Work Item with id '"+wi.getId() + 
                 "' on process instance: "+wi.getProcessInstanceId());
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("wls");
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
         EntityManager em = emFactory.createEntityManager();
         WebLeadSplit wls = (WebLeadSplit)wi.getParameter("WebLeadSplit");
         String s = 
@@ -42,6 +42,7 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
             "WHERE NAME='"+(String)wi.getParameter("Name")+"'";
         Query q = em.createQuery(s);
         try {
+            em.joinTransaction();
             q.executeUpdate();
         } catch (TransactionRequiredException e) {
             LOG.error("Update WebLeadSplit WIH: No transaction has been joined to the persistence context.");
@@ -51,6 +52,8 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
             LOG.error("Update WebLeadSplit WIH: Query timed out and was rolled back.");
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            em.close();
         }
         Map<String, Object> r = new HashMap<>();
         wim.completeWorkItem(wi.getId(), r);
