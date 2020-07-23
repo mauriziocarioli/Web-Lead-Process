@@ -21,17 +21,18 @@ import org.kie.api.runtime.process.WorkItemHandler;
 public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(ReadWebLeadSplitWorkItemHandler.class);
+    private EntityManagerFactory emf;
 
     public ReadWebLeadSplitWorkItemHandler() {
         LOG.info("Registered ReadWebLeadSplitWorkItemHandler");
+        emf = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
     }
 
     @Override
     public void executeWorkItem(WorkItem wi, WorkItemManager wim) {
         LOG.info("Executing Read WebLeadSplit Work Item with id '"+wi.getId()+
         "' on process instance: "+wi.getProcessInstanceId());
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
-        EntityManager em = emFactory.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         String s = "SELECT * FROM WEBLEAD.WEBLEADSPLIT WHERE NAME='"+(String)wi.getParameter("Name")+"'";
         Query q = em.createQuery(s);
         WebLeadSplit wls = new WebLeadSplit();
