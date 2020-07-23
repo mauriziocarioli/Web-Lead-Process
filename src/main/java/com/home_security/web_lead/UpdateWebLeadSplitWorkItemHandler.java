@@ -23,16 +23,16 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
     private static final Logger LOG = LoggerFactory.getLogger(UpdateWebLeadSplitWorkItemHandler.class);
     private EntityManagerFactory emf;
 
-    public UpdateWebLeadSplitWorkItemHandler() {
+    public UpdateWebLeadSplitWorkItemHandler(ClassLoader cl) {
         LOG.info("Registered UpdateWebLeadSplitWorkItemHandler");
         //ClassLoader cl = UpdateWebLeadSplitWorkItemHandler.class.getClassLoader();
-        //ClassLoader ccl = Thread.currentThread().getContextClassLoader();
+        ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
-            //Thread.currentThread().setContextClassLoader(cl);
+            Thread.currentThread().setContextClassLoader(cl);
             LOG.info("Creating Entity Manager Factory");
             emf = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
         } finally {
-            //Thread.currentThread().setContextClassLoader(ccl);           
+            Thread.currentThread().setContextClassLoader(ccl);           
         }
     }
 

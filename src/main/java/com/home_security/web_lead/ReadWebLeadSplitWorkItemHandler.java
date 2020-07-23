@@ -23,16 +23,16 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
     private static final Logger LOG = LoggerFactory.getLogger(ReadWebLeadSplitWorkItemHandler.class);
     private EntityManagerFactory emf;
 
-    public ReadWebLeadSplitWorkItemHandler() {
+    public ReadWebLeadSplitWorkItemHandler(ClassLoader cl) {
         LOG.info("Registered ReadWebLeadSplitWorkItemHandler");
         //ClassLoader cl = ReadWebLeadSplitWorkItemHandler.class.getClassLoader();
-        //ClassLoader ccl = Thread.currentThread().getContextClassLoader();
+        ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
-            //Thread.currentThread().setContextClassLoader(cl);
+            Thread.currentThread().setContextClassLoader(cl);
             LOG.info("Creating Entity Manager Factory");
             emf = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
         } finally {
-            //Thread.currentThread().setContextClassLoader(ccl);           
+            Thread.currentThread().setContextClassLoader(ccl);           
         }
     }
 
