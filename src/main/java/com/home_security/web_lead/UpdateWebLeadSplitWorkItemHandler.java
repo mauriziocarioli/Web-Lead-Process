@@ -32,7 +32,7 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
     public void executeWorkItem(WorkItem wi, WorkItemManager wim) {
         LOG.info("Executing Update WebLeadSplit Work Item with id '"+wi.getId() + 
                 "' on process instance: "+wi.getProcessInstanceId());
-        EntityManager em = emFactory.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         WebLeadSplit wls = (WebLeadSplit)wi.getParameter("WebLeadSplit");
         String s = 
             "UPDATE WEBLEAD.WEBLEADSPLIT SET "+
