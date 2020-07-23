@@ -29,7 +29,8 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         //ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
             //Thread.currentThread().setContextClassLoader(cl);
-            emf = Persistence.createEntityManagerFactory("com.home-security:Web-Lead:1.0.0-SNAPSHOT");
+            LOG.info("Creating Entity Manager Factory");
+            emf = Persistence.createEntityManagerFactory("WEBLEADSPLIT_PERSISTENCE_UNIT");
         } finally {
             //Thread.currentThread().setContextClassLoader(ccl);           
         }
