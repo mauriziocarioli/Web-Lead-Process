@@ -49,7 +49,7 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         "where w.name=:name";
         Query q = em.createQuery(s).setParameter("name", name);*/
         //SQL
-        String s = "SELECT * FROM WEBLEAD.WEBLEADSPLIT WHERE NAME='"+(String)wi.getParameter("Name")+"'";
+        String s = "SELECT * FROM WEBLEAD.WEBLEADSPLIT W WHERE W.NAME='"+(String)wi.getParameter("Name")+"'";
         Query q = em.createNativeQuery(s);
         WebLeadSplit wls = new WebLeadSplit();
         try {
