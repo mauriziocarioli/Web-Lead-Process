@@ -14,34 +14,34 @@ public class WebLeadSplit implements Serializable {
 
 	private static final long serialVersionUID = -7342269403495664640L;
 
-//	@GeneratedValue(generator = "WEBLEADSPLIT_ID_GENERATOR", strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "WEBLEADSPLIT_ID_GENERATOR", strategy = GenerationType.AUTO)
 	@Id
-//	@SequenceGenerator(name = "WEBLEADSPLIT_ID_GENERATOR", sequenceName = "WEBLEADSPLIT_ID_SEQ")
-//	@Column(name = "ID", unique = true)
+	@SequenceGenerator(name = "WEBLEADSPLIT_ID_GENERATOR", sequenceName = "WEBLEADSPLIT_ID_SEQ")
+	@Column(name = "ID", unique = true)
 	private Long id;
 
 	@Label("LOB")
-//	@Column(name = "LOB")
+	@Column(name = "LOB")
 	private String lob;
 
 	@Label("Name")
-//	@Column(name = "NAME")
+	@Column(name = "NAME")
 	private String name;
 
 	@Label("Split Ratio")
-//	@Column(name = "SPLIT_RATIO")
+	@Column(name = "SPLIT_RATIO")
 	private Double splitRatio;
 
 	@Label("Live To Date")
-//	@Column(name = "LIVE_TO_DATE", nullable = true)
+	@Column(name = "LIVE_TO_DATE", nullable = true)
 	private Double liveToDate;
 
 	@Label("Split Count")
-//	@Column(name = "SPLIT_COUNT")
+	@Column(name = "SPLIT_COUNT")
 	private Integer splitCount;
 
 	@Label("Local Count")
-//	@Column(name = "LOCAL_COUNT")
+	@Column(name = "LOCAL_COUNT")
 	private Integer localCount;
 
 	public WebLeadSplit() {
