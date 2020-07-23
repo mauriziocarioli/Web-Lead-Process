@@ -22,10 +22,10 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(ReadWebLeadSplitWorkItemHandler.class);
     private EntityManagerFactory emf;
-    private ClassLoader cl;
 
     public ReadWebLeadSplitWorkItemHandler() {
         LOG.info("Registered ReadWebLeadSplitWorkItemHandler");
+        ClassLoader cl = ReadWebLeadSplitWorkItemHandler.class.getClassLoader();
         ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(cl);
