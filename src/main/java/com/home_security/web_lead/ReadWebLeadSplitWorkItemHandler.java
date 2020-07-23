@@ -25,7 +25,6 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     public ReadWebLeadSplitWorkItemHandler(ClassLoader cl) {
         LOG.info("Registered ReadWebLeadSplitWorkItemHandler");
-        //ClassLoader cl = ReadWebLeadSplitWorkItemHandler.class.getClassLoader();
         ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(cl);

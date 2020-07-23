@@ -25,7 +25,6 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     public UpdateWebLeadSplitWorkItemHandler(ClassLoader cl) {
         LOG.info("Registered UpdateWebLeadSplitWorkItemHandler");
-        //ClassLoader cl = UpdateWebLeadSplitWorkItemHandler.class.getClassLoader();
         ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(cl);
