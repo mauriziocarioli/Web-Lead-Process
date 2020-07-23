@@ -41,13 +41,16 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         "' on process instance: "+wi.getProcessInstanceId());
         EntityManager em = emf.createEntityManager();
         String name = (String)wi.getParameter("Name");
-        String s =
         //JPQL not SQL 
+        /*String s =
         "select "+
             "w "+
         "from WebLeadSplit w "+
         "where w.name=:name";
-        Query q = em.createQuery(s).setParameter("name", name);
+        Query q = em.createQuery(s).setParameter("name", name);*/
+        //SQL
+        String s = "SELECT * FROM WEBLEAD.WEBLEADSPLIT WHERE NAME='"+(String)wi.getParameter("Name")+"'";
+        Query q = em.createNativeQuery(s);
         WebLeadSplit wls = new WebLeadSplit();
         try {
             em.joinTransaction();

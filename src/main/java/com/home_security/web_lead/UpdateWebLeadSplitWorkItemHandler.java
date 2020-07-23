@@ -41,6 +41,7 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
                 "' on process instance: "+wi.getProcessInstanceId());
         EntityManager em = emf.createEntityManager();
         WebLeadSplit wls = (WebLeadSplit)wi.getParameter("WebLeadSplit");
+        //SQL
         String s = 
             "UPDATE WEBLEAD.WEBLEADSPLIT SET "+
                 "LIVE_TO_DATE="+wls.getLiveToDate()+", "+
@@ -48,7 +49,7 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
                 "SPLIT_COUNT="+wls.getSplitCount()+", "+
                 "LOCAL_COUNT="+wls.getLocalCount()+" "+
             "WHERE NAME='"+(String)wi.getParameter("Name")+"'";
-        Query q = em.createQuery(s);
+        Query q = em.createNativeQuery(s);
         try {
             em.joinTransaction();
             q.executeUpdate();
