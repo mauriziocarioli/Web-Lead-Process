@@ -68,6 +68,7 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         Map<String, Object> r = new HashMap<>();
         r.put("Result",wls);
         wim.completeWorkItem(wi.getId(), r);
+        LOG.info("Read WebLeadSplit WIH completed");
     }
 
     @Override
