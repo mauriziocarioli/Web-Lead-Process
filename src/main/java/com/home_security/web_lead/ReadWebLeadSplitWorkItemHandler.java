@@ -46,13 +46,13 @@ public class ReadWebLeadSplitWorkItemHandler implements WorkItemHandler {
         Query q = em.createQuery(s).setParameter("name", (String)wi.getParameter("Name"));*/
         //SQL
         String s = "SELECT * FROM WEBLEADSPLIT W WHERE W.NAME='"+(String)wi.getParameter("Name")+"'";
-        Query q = em.createNativeQuery(s);
+        Query q = em.createNativeQuery(s,WebLeadSplit.class);
         LOG.info("Query created!");
-        WebLeadSplit wls = new WebLeadSplit();
+        Object wls = new Object();
         try {
             em.joinTransaction();
             LOG.info("Joined transaction");
-            wls = (WebLeadSplit)q.getSingleResult();
+            wls = q.getSingleResult();
             LOG.info("Result returned");
         } catch (NoResultException e) {
             LOG.error("Read WebLeadSplit WIH: No result.");
