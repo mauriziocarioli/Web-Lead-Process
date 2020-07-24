@@ -37,22 +37,23 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     @Override
     public void executeWorkItem(WorkItem wi, WorkItemManager wim) {
-        LOG.info("Executing Update WebLeadSplit Work Item with id '"+wi.getId() + 
+        LOG.info("!Executing Update WebLeadSplit Work Item with id '"+wi.getId() + 
                 "' on process instance: "+wi.getProcessInstanceId());
         EntityManager em = emf.createEntityManager();
-        WebLeadSplit wls = (WebLeadSplit)wi.getParameter("WebLeadSplit");
+        Object wls = wi.getParameter("WebLeadSplit");
         //SQL
-        String s = 
+        /*String s = 
             "UPDATE WEBLEADSPLIT SET "+
                 "LIVE_TO_DATE="+wls.getLiveToDate()+", "+
                 "SPLIT_RATIO="+wls.getSplitRatio()+", "+
                 "SPLIT_COUNT="+wls.getSplitCount()+", "+
                 "LOCAL_COUNT="+wls.getLocalCount()+" "+
             "WHERE NAME='"+(String)wi.getParameter("Name")+"'";
-        Query q = em.createNativeQuery(s);
+        Query q = em.createNativeQuery(s);*/
+
         try {
             em.joinTransaction();
-            q.executeUpdate();
+            wls = em.merge(wls);
         } catch (TransactionRequiredException e) {
             LOG.error("Update WebLeadSplit WIH: No transaction has been joined to the persistence context.");
         }  catch (QueryTimeoutException e) {
@@ -65,7 +66,10 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
             em.close();
         }
         Map<String, Object> r = new HashMap<>();
+        LOG.info("Update WebLeadSplit WIH about to complete");
+        r.put("Result",wls);
         wim.completeWorkItem(wi.getId(), r);
+        LOG.info("Update WebLeadSplit WIH completed");
     }
 
     @Override
