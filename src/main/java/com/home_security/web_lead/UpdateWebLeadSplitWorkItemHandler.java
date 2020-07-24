@@ -37,7 +37,7 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     @Override
     public void executeWorkItem(WorkItem wi, WorkItemManager wim) {
-        LOG.info("!!Executing Update WebLeadSplit Work Item with id '"+wi.getId() + 
+        LOG.info("!!!Executing Update WebLeadSplit Work Item with id '"+wi.getId() + 
                 "' on process instance: "+wi.getProcessInstanceId());
         EntityManager em = emf.createEntityManager();
         //SQL
