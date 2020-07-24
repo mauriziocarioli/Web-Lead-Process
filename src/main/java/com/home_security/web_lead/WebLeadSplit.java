@@ -9,7 +9,7 @@ import org.kie.api.definition.type.*;
  */
 
 @Entity
-@Table(name = "WEBLEAD.WEBLEADSPLIT")
+@Table(name = "WEBLEADSPLIT")
 public class WebLeadSplit implements Serializable {
 
 	private static final long serialVersionUID = -7342269403495664640L;
