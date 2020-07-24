@@ -43,7 +43,7 @@ public class UpdateWebLeadSplitWorkItemHandler implements WorkItemHandler {
         WebLeadSplit wls = (WebLeadSplit)wi.getParameter("WebLeadSplit");
         //SQL
         String s = 
-            "UPDATE WEBLEAD.WEBLEADSPLIT SET "+
+            "UPDATE WEBLEADSPLIT SET "+
                 "LIVE_TO_DATE="+wls.getLiveToDate()+", "+
                 "SPLIT_RATIO="+wls.getSplitRatio()+", "+
                 "SPLIT_COUNT="+wls.getSplitCount()+", "+
