@@ -94,7 +94,7 @@
     [
         "name" : "Rest",
         "displayName" : "Rest",
-        "category" : "jbpm-workitems-rest",
+        "category" : "jbpm-workitems",
         "description" : "",
         "defaultHandler" : "mvel: new org.jbpm.process.workitem.rest.RESTWorkItemHandler()",
         "documentation" : "jbpm-workitems-rest/index.html",
@@ -130,7 +130,7 @@
     [
         "name" : "CamelJMSConnector",
         "displayName" : "CamelJMSConnector",
-        "category" : "camel-workitem",
+        "category" : "jbpm-workitems",
         "description" : "",
         "defaultHandler" : "mvel: new org.jbpm.process.workitem.camel.JMSCamelWorkitemHandler()",
         "documentation" : "camel-workitem/index.html",
@@ -172,6 +172,6 @@
       "Name" : new StringDataType(),
       "WebLeadSplit" : new ObjectDataType()
     ]
-  ],
+  ]
 
 ]
