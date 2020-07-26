@@ -48,12 +48,12 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 Query q = em.createQuery(s).setParameter("name", (String)wi.getParameter("Name"));*/
                 //SQL
                 String s = "SELECT * FROM WEBLEADSPLIT W WHERE W.NAME='"+(String)wi.getParameter("Name")+"'";
-                Query q = em.createNativeQuery(s,WebLeadSplit.class);
+                Query rq = em.createNativeQuery(s,WebLeadSplit.class);
                 Object wls = new Object();
                 try {
                     em.joinTransaction();
                     LOG.info("Joined transaction");
-                    wls = q.getSingleResult();
+                    wls = rq.getSingleResult();
                     LOG.info("Result returned");
                 } catch (NoResultException e) {
                     LOG.error("Read WebLeadSplit WIH: No result.");
@@ -66,9 +66,9 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 } finally {
                     em.close();
                 }
-                Map<String, Object> r = new HashMap<>();
-                r.put("Result",wls);
-                wim.completeWorkItem(wi.getId(), r);
+                Map<String, Object> rr = new HashMap<>();
+                rr.put("Result",wls);
+                wim.completeWorkItem(wi.getId(), rr);
             break;
             case "UPDATE":
                 //SQL
@@ -79,10 +79,10 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                         "SPLIT_COUNT="+wi.getParameter("SplitCount")+", "+
                         "LOCAL_COUNT="+wi.getParameter("LocalCount")+" "+
                     "WHERE NAME='"+(String)wi.getParameter("Name")+"'";
-                Query q = em.createNativeQuery(s);
+                Query uq = em.createNativeQuery(s);
                 try {
                     em.joinTransaction();
-                    q.executeUpdate();
+                    uq.executeUpdate();
                 } catch (TransactionRequiredException e) {
                     LOG.error("Update WebLeadSplit WIH: No transaction has been joined to the persistence context.");
                 }  catch (QueryTimeoutException e) {
@@ -94,8 +94,8 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 } finally {
                     em.close();
                 }
-                Map<String, Object> r = new HashMap<>();
-                wim.completeWorkItem(wi.getId(), r);
+                Map<String, Object> ur = new HashMap<>();
+                wim.completeWorkItem(wi.getId(), ur);
             break; 
         }
     }
