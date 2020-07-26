@@ -33,6 +33,8 @@ to the end point
 http://localhost:8080/kie-server/services/rest/server/containers/Web-Lead-Process/processes/Web-Lead-Process.DecisionFlow/instances
 ----
 
+PostgreSQL parameter max_prepared_transactions must be set to a positive number in postgresql.conf.
+
 The JPA Work Item Handlers require a XA driver. Insert the following in JBoss standalone.xml for PostgreSQL:
 
 [source,XML]
