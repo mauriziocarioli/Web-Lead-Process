@@ -13,6 +13,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.QueryTimeoutException;
 import javax.persistence.TransactionRequiredException;
+import javax.persistence.NonUniqueResultException;
+import javax.persistence.NoResultException;
 
 import org.kie.api.runtime.process.WorkItem;
 import org.kie.api.runtime.process.WorkItemManager;
@@ -47,13 +49,13 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 "select w from WebLeadSplit w where w.name=:name";
                 Query q = em.createQuery(s).setParameter("name", (String)wi.getParameter("Name"));*/
                 //SQL
-                String s = "SELECT * FROM WEBLEADSPLIT W WHERE W.NAME='"+(String)wi.getParameter("Name")+"'";
-                Query q = em.createNativeQuery(s,WebLeadSplit.class);
+                String rs = "SELECT * FROM WEBLEADSPLIT W WHERE W.NAME='"+(String)wi.getParameter("Name")+"'";
+                Query rq = em.createNativeQuery(rs,WebLeadSplit.class);
                 Object wls = new Object();
                 try {
                     em.joinTransaction();
                     LOG.info("Joined transaction");
-                    wls = q.getSingleResult();
+                    wls = rq.getSingleResult();
                     LOG.info("Result returned");
                 } catch (NoResultException e) {
                     LOG.error("Read WebLeadSplit WIH: No result.");
@@ -66,23 +68,23 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 } finally {
                     em.close();
                 }
-                Map<String, Object> r = new HashMap<>();
-                r.put("Result",wls);
-                wim.completeWorkItem(wi.getId(), r);
+                Map<String, Object> rr = new HashMap<>();
+                rr.put("Result",wls);
+                wim.completeWorkItem(wi.getId(), rr);
             break;
             case "UPDATE":
                 //SQL
-                String s = 
+                String us = 
                     "UPDATE WEBLEADSPLIT SET "+
                         "LIVE_TO_DATE="+wi.getParameter("LiveToDate")+", "+
                         "SPLIT_RATIO="+wi.getParameter("SplitRatio")+", "+
                         "SPLIT_COUNT="+wi.getParameter("SplitCount")+", "+
                         "LOCAL_COUNT="+wi.getParameter("LocalCount")+" "+
                     "WHERE NAME='"+(String)wi.getParameter("Name")+"'";
-                Query q = em.createNativeQuery(s);
+                Query uq = em.createNativeQuery(us);
                 try {
                     em.joinTransaction();
-                    q.executeUpdate();
+                    uq.executeUpdate();
                 } catch (TransactionRequiredException e) {
                     LOG.error("Update WebLeadSplit WIH: No transaction has been joined to the persistence context.");
                 }  catch (QueryTimeoutException e) {
@@ -94,8 +96,8 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 } finally {
                     em.close();
                 }
-                Map<String, Object> r = new HashMap<>();
-                wim.completeWorkItem(wi.getId(), r);
+                Map<String, Object> ur = new HashMap<>();
+                wim.completeWorkItem(wi.getId(), ur);
             break; 
         }
     }
