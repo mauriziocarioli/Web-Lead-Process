@@ -18,19 +18,13 @@
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new com.home_security.web_lead.ReadWebLeadSplitWorkItemHandler(classLoader)</identifier>
+            <identifier>new com.home_security.web_lead.WebLeadSplitWorkItemHandler(classLoader)</identifier>
             <parameters/>
-            <name>ReadWebLeadSplitTask</name>
+            <name>WebLeadSplitTask</name>
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new com.home_security.web_lead.UpdateWebLeadSplitWorkItemHandler(classLoader)</identifier>
-            <parameters/>
-            <name>UpdateWebLeadSplitTask</name>
-        </work-item-handler>
-        <work-item-handler>
-            <resolver>mvel</resolver>
-            <identifier>new org.jbpm.process.workitem.jms.JMSSendTaskWorkItemHandler()</identifier>
+            <identifier>new org.jbpm.process.workitem.jms.JMSSendTaskWorkItemHandler("java:jboss/DefaultJMSConnectionFactory","java:/jms/queue/ExpiryQueue")</identifier>
             <parameters/>
             <name>JMSSendTask</name>
         </work-item-handler>
