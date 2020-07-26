@@ -39,11 +39,12 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
 
     @Override
     public void executeWorkItem(WorkItem wi, WorkItemManager wim) {
-        LOG.info("Executing Update WebLeadSplit Work Item with id '"+wi.getId() + 
+        LOG.info("Executing WebLeadSplit Work Item with id '"+wi.getId() + 
                 "' on process instance: "+wi.getProcessInstanceId());
         EntityManager em = emf.createEntityManager();
         switch ((String)wi.getParameter("Action")) {
             case "READ":
+                LOG.info("Executing READ action");
                 //JPQL 
                 /*String s =
                 "select w from WebLeadSplit w where w.name=:name";
@@ -71,8 +72,10 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 Map<String, Object> rr = new HashMap<>();
                 rr.put("Result",wls);
                 wim.completeWorkItem(wi.getId(), rr);
+                LOG.info("Completed WebLeadSplit Work Item");
             break;
             case "UPDATE":
+            LOG.info("Executing UPDATE action")
                 //SQL
                 String us = 
                     "UPDATE WEBLEADSPLIT SET "+
@@ -98,7 +101,8 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 }
                 Map<String, Object> ur = new HashMap<>();
                 wim.completeWorkItem(wi.getId(), ur);
-            break; 
+                LOG.info("Completed WebLeadSplit Work Item");
+                break; 
         }
     }
 
