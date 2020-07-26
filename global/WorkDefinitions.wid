@@ -149,28 +149,21 @@
     ],
 
   [
-    "name" : "ReadWebLeadSplitTask",
-    "defaultHandler" : "mvel: new com.home_security.web_lead.ReadWebLeadSplitWorkItemHandler()",
-    "displayName" : "Read Web Lead Split Task",
+    "name" : "WebLeadSplitTask",
+    "defaultHandler" : "mvel: new com.home_security.web_lead.WebLeadSplitWorkItemHandler()",
+    "displayName" : "Web Lead Split Task",
     "icon" : "database-icon-flat.png",
     "category" : "Custom tasks",
     "parameters" : [
-       "Name" : new StringDataType()
+      "Action" : new StringDataType(),
+      "Name" : new StringDataType(),
+      "LiveToDate" : new StringDataType(),
+      "SplitRatio" : new StringDataType(),
+      "SplitCount" : new StringDataType(),
+      "LocalCount" : new StringDataType()
     ],
     "results" : [
-       "Result" : new ObjectDataType()
-    ]
-  ],
-
-  [
-    "name" : "UpdateWebLeadSplitTask",
-    "defaultHandler" : "mvel: new com.home_security.web_lead.UpdateWebLeadSplitWorkItemHandler()",
-    "displayName" : "Update Web Lead Split Task",
-    "icon" : "database-icon-flat.png",
-    "category" : "Custom tasks",
-    "parameters" : [
-      "Name" : new StringDataType(),
-      "WebLeadSplit" : new ObjectDataType()
+      "Result" : new ObjectDataType()
     ]
   ]
 
