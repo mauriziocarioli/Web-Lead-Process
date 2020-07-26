@@ -30,7 +30,7 @@
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new org.jbpm.process.workitem.jms.JMSSendTaskWorkItemHandler()</identifier>
+            <identifier>new org.jbpm.process.workitem.jms.JMSSendTaskWorkItemHandler("java:jboss/DefaultJMSConnectionFactory","java:/jms/queue/ExpiryQueue")</identifier>
             <parameters/>
             <name>JMSSendTask</name>
         </work-item-handler>
