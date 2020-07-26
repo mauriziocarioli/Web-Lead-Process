@@ -18,15 +18,9 @@
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new com.home_security.web_lead.ReadWebLeadSplitWorkItemHandler(classLoader)</identifier>
+            <identifier>new com.home_security.web_lead.WebLeadSplitWorkItemHandler(classLoader)</identifier>
             <parameters/>
-            <name>ReadWebLeadSplitTask</name>
-        </work-item-handler>
-        <work-item-handler>
-            <resolver>mvel</resolver>
-            <identifier>new com.home_security.web_lead.UpdateWebLeadSplitWorkItemHandler(classLoader)</identifier>
-            <parameters/>
-            <name>UpdateWebLeadSplitTask</name>
+            <name>WebLeadSplitTask</name>
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
