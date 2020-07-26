@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.home-security</groupId>
   <artifactId>Web-Lead-Process</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0-jpa-SNAPSHOT</version>
   <packaging>kjar</packaging>
   <name>Web-Lead-Process</name>
   <description></description>
