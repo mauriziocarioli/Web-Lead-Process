@@ -46,10 +46,10 @@ The JPA Work Item Handlers require a XA driver. Insert the following in JBoss st
                     <driver>postgresqlXA</driver>
                     <xa-datasource-property name="ServerName">localhost</xa-datasource-property>
                     <xa-datasource-property name="PortNumber">5432</xa-datasource-property>
-                    <xa-datasource-property name="DatabaseName">...</xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">[DATABASE NAME]</xa-datasource-property>
                     <security>
-                        <user-name>...</user-name>
-                        <password>...</password>
+                        <user-name>[USER]</user-name>
+                        <password>[PASSWORD]</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"></valid-connection-checker>
