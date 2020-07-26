@@ -57,6 +57,7 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                     em.joinTransaction();
                     LOG.info("Joined transaction");
                     wls = rq.getSingleResult();
+                    if (wls == null) {LOG.error("wls is null");}
                     LOG.info("Result returned");
                 } catch (NoResultException e) {
                     LOG.error("Read WebLeadSplit WIH: No result.");
