@@ -155,6 +155,7 @@
     "icon" : "database-icon-flat.png",
     "category" : "Custom tasks",
     "parameters" : [
+      "Action" : new StringDataType(),
       "Name" : new StringDataType(),
       "LiveToDate" : new StringDataType(),
       "SplitRatio" : new StringDataType(),
