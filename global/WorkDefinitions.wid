@@ -159,8 +159,10 @@
       "LiveToDate" : new StringDataType(),
       "SplitRatio" : new StringDataType(),
       "SplitCount" : new StringDataType(),
-      "LocalCount" : new StringDataType(),
-      "WebLeadSplit" : new ObjectDataType()
+      "LocalCount" : new StringDataType()
+    ]
+    "results" : [
+      "Result" : new ObjectDataType()
     ]
   ]
 
