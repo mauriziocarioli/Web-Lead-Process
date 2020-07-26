@@ -75,7 +75,7 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 LOG.info("Completed WebLeadSplit Work Item");
             break;
             case "UPDATE":
-            LOG.info("Executing UPDATE action")
+            LOG.info("Executing UPDATE action");
                 //SQL
                 String us = 
                     "UPDATE WEBLEADSPLIT SET "+
