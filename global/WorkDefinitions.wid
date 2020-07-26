@@ -161,7 +161,7 @@
       "SplitRatio" : new StringDataType(),
       "SplitCount" : new StringDataType(),
       "LocalCount" : new StringDataType()
-    ]
+    ],
     "results" : [
       "Result" : new ObjectDataType()
     ]
