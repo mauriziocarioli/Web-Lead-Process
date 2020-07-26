@@ -58,7 +58,7 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                     LOG.info("Joined transaction");
                     wls = rq.getSingleResult();
                     if (wls == null) {LOG.error("wls is null");}
-                    LOG.info("Non null Result returned");
+                    LOG.info("READ action result returned");
                 } catch (NoResultException e) {
                     LOG.error("Read WebLeadSplit WIH: No result.");
                 } catch (NonUniqueResultException e) {
@@ -89,6 +89,7 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
                 try {
                     em.joinTransaction();
                     uq.executeUpdate();
+                    LOG.info("UPDATE action executed");
                 } catch (TransactionRequiredException e) {
                     LOG.error("Update WebLeadSplit WIH: No transaction has been joined to the persistence context.");
                 }  catch (QueryTimeoutException e) {
