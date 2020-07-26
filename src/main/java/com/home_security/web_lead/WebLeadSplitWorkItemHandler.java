@@ -26,7 +26,7 @@ public class WebLeadSplitWorkItemHandler implements WorkItemHandler {
     private EntityManagerFactory emf;
 
     public WebLeadSplitWorkItemHandler(ClassLoader cl) {
-        LOG.info("Registered UpdateWebLeadSplitWorkItemHandler");
+        LOG.info("Registered WebLeadSplitWorkItemHandler");
         ClassLoader ccl = Thread.currentThread().getContextClassLoader();
         try {
             Thread.currentThread().setContextClassLoader(cl);
