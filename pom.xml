@@ -14,11 +14,11 @@
     <version.org.kie>7.33.0.Final-redhat-00002</version.org.kie>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>javax.persistence-api</artifactId>
-      <version>2.2</version>
-    </dependency>
+<dependency>
+	<groupId>org.codehaus.jackson</groupId>
+	<artifactId>jackson-mapper-asl</artifactId>
+	<version>1.9.13</version>
+</dependency>    
     <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-api</artifactId>
