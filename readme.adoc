@@ -30,32 +30,24 @@ to the end point
 
 [source,URL]
 ----
-http://localhost:8080/kie-server/services/rest/server/containers/Web-Lead-Process/processes/Web-Lead-Process.DecisionFlow/instances
+[KIE-SERVER ROUTE]/services/rest/server/containers/Web-Lead-Process/processes/Web-Lead-Process.DecisionFlow/instances
 ----
 
-PostgreSQL parameter max_prepared_transactions must be set to a positive number in postgresql.conf.
-
-The JPA Work Item Handlers require a XA driver. Insert the following in JBoss standalone.xml for PostgreSQL:
+The JPA Work Item Handlers require a XA driver. Configure the kie-server template to insert the following in JBoss standalone-openshift.xml for PostgreSQL:
 
 [source,XML]
 ----
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
             ...
-                <xa-datasource jndi-name="java:jboss/PostgresXADS" pool-name="PostgresXADS">
-                    <driver>postgresqlXA</driver>
-                    <xa-datasource-property name="ServerName">localhost</xa-datasource-property>
-                    <xa-datasource-property name="PortNumber">5432</xa-datasource-property>
-                    <xa-datasource-property name="DatabaseName">[DATABASE NAME]</xa-datasource-property>
-                    <security>
-                        <user-name>[USER]</user-name>
-                        <password>[PASSWORD]</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"></valid-connection-checker>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"></exception-sorter>
-                    </validation>
-                </xa-datasource>
+        <datasource jta="true" jndi-name="java:/jboss/datasources/[USER NAME]" pool-name="[DATASOURCE NAME]" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}">
+          <connection-url>jdbc:postgresql://[DB SERVICE NAME]:5432/[DATABASE NAME]</connection-url>
+          <driver>postgresql</driver>
+          <security>
+            <user-name>[USER]</user-name>
+            <password>[PASSWORD]</password>
+          </security>
+        </datasource>
                 ...
                 <drivers>
                 ...
